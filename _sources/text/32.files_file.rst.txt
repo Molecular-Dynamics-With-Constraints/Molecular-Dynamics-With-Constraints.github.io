@@ -1,0 +1,23 @@
+.. _chap-files_file:
+
+The .files File
+###########
+
+==================
+The .files File
+==================
+
+This file is very similar to the .file in abinit, there are two 
+differences with the abinit .file file. First the name of the files 
+written down in the .files must have a ‘*’ in between the name and the extension. 
+For instance the *testing_data/c_8_data/c_8.files*:
+::
+	
+	c_8*.in
+	c_8*.out
+	c_8*xi
+	c_8*xo
+	c_8*x
+	pseudo/C.psp8
+	
+For more information about the abinit .files file visit  `Abinit <https://www.abinit.org/>`_

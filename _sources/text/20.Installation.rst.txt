@@ -1,0 +1,36 @@
+.. _chap-Installation:
+
+Installation
+############
+
+===============
+Installing mdwc
+===============
+
+Installing *mdwc* is easy, the first step is to download (clone) the 
+code from its site in github `https://github.com/zeledon14/mdwc.git <https://github.com/zeledon14/mdwc.git>`_
+To download the code use the command: ::
+
+	git clone https://github.com/zeledon14/mdwc.git
+	
+To install *mdwc* go inside the **mdwc** directory just downloaded. 
+Inside the **mdwc** directory there are other three directories (mdwc, 
+scripts, and testing_data), and two files (READ.md, and setup.py). 
+Inside the **mdwc** directory containing setup.py execute: ::
+
+	python setup.py install --record mdwc_uninstall.txt
+	
+That's it *mdwc* is installed. The *mdwc_uninstall.txt* stores the 
+installation record of *mdwc* in case future uninstallation.
+
+=================
+Uninstalling mlmd
+=================
+
+To uninstall *mdwc*, go to the directory where the *mdwc_uninstall.txt* 
+file is stored (usually the **mdwc** directory inside the directory where 
+the git repository were cloned) and execute the command: ::
+
+	cat mdwc_uninstall.txt | xargs rm -rf
+	
+After that you can remove the **mdwc** directory.

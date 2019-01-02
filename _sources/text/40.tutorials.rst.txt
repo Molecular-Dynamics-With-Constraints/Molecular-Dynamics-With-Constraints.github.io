@@ -1,0 +1,40 @@
+.. _chap-tutorials:
+
+Tutorials
+############
+==============
+Running the MD
+==============
+
+To run a molecular dynamics simulation using the *mdwc_* script the three 
+input files **must** have the same name (name.in, name.files, name.md) 
+for example the *testing_data/c_8_data* and *testing_data/LaMnO3_data* directories.
+
+The *mdwc_* script runs the NPT ensemble as the default to run and NPT 
+simulation just type (in a directory with name.in, name.files, name.md): 
+::
+	mdwc_  -name name_of_the_input_files 
+
+In the case of the example in *testing_data/c_8_data* ::
+
+	mdwc_  -name c_8
+
+The system can also run an NVT ensemble with:
+::
+	
+	mdwc_  -name name_of_the_input_files -NVT True
+	
+	
+Finally, the system can also use run abinit with mpirum and a certain number of processors, adding the flags:
+::
+
+	-mpirum True and -np number of processor
+
+The output of *mdwc_* is a total of abinit_steps directories in a series 
+of name0, name1, name2, name3, … nameabinit_steps-1. Inside this directories, 
+there is going to be the information of every abinit calculation as declared 
+in the .files.
+
+In addition there is a .mdout file in every of the output directories, 
+this .mdout file has the value of the constraints, pressure and volume 
+through the simulation spam covered by that abinit_step.

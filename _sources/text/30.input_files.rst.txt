@@ -1,0 +1,21 @@
+.. _chap-input_files:
+
+Input Files
+###########
+
+The input files are text files with the information to start calculations 
+in *mdwc* and *mdwc_*. There are three types of input files:
+ 
+**.in file** This file is exact to the *.in* file used as input in abinit
+
+**.files file**  This file is very similar to the .file in abinit. 
+
+**.md file** to input the parameters for the molecular dynamics.
+
+.. toctree::
+   :maxdepth: 2
+   
+   31.in_file
+   32.files_file
+   33.md_file
+

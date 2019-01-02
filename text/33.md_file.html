@@ -1,0 +1,437 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The .md File &#8212; mdwc 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tutorials" href="40.tutorials.html" />
+    <link rel="prev" title="The .files File" href="32.files_file.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="40.tutorials.html" title="Tutorials"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="32.files_file.html" title="The .files File"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">mdwc 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="30.input_files.html" accesskey="U">Input Files</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-md-file">
+<span id="chap-md-file"></span><h1>The .md File<a class="headerlink" href="#the-md-file" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>The .md File<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>The .md file defines the parameters for the molecular dynamics simulation
+carry out by the <em>mdwc</em> package, the .md file must have the same format as
+the sample files (<em>testing_data/c_8_data/c_8.md</em>, <em>testing_data/LaMnO3_data/LaMnO3.md</em>),
+as an example we reproduce the c_8.md here:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Qmass</span>          <span class="mf">0.5</span>
+<span class="n">temp_cons</span>      <span class="mf">250.89</span>
+<span class="c1">#temp_line      250.6, 275.6,</span>
+<span class="c1">#temp_plat      250.0, 280.0, 290.5,</span>
+<span class="c1">#temp_step      5,   2,   3,</span>
+<span class="n">bmass</span>          <span class="mf">10.0</span>
+<span class="n">Pressure</span>       <span class="mf">0.00025</span>
+<span class="n">dt</span>             <span class="mf">0.01</span>
+<span class="n">correct_spteps</span> <span class="mi">8</span>
+<span class="n">md_steps</span>       <span class="mi">2</span>
+<span class="n">abinit_steps</span>   <span class="mi">5</span>
+<span class="n">number_atom_fix_constrains</span> <span class="mi">0</span>
+<span class="n">atom_fixed_constrains</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="c1">#costrains over atoms 6 and 7</span>
+<span class="n">atom_fixed_position</span> <span class="mf">14.96</span> <span class="mf">4.57</span> <span class="mf">0.00</span><span class="p">,</span> <span class="mf">14.96</span> <span class="mf">0.00</span> <span class="mf">4.77</span><span class="p">,</span>
+<span class="n">atom_fix_coordinate</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">,</span>
+<span class="n">number_bond_constrains</span> <span class="mi">0</span>
+<span class="n">bond_constrains</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">,</span> <span class="c1">#costrains between atoms 1 and 2, 7 and 8</span>
+<span class="n">bond_distance</span> <span class="mf">6.76275</span><span class="p">,</span> <span class="mf">6.89948</span>
+<span class="n">number_angle_constrains</span> <span class="mi">0</span>
+<span class="n">angle_constrains</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">,</span><span class="c1">#constrain of angle formed 3 4 5 with vertex at 3</span>
+<span class="n">value_cosine_angle</span> <span class="mf">0.532</span><span class="p">,</span> <span class="mf">0.915</span>
+<span class="n">number_cell_parameter_constrain</span> <span class="mi">0</span>
+<span class="n">cell_parameter_constrain</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="c1">#constrain over the length of the first cell vector</span>
+<span class="n">cell_parameter_value</span> <span class="mf">19.9400</span><span class="p">,</span> <span class="mf">9.1400</span>
+<span class="n">number_cell_angle_constrain</span> <span class="mi">0</span>
+<span class="n">cell_angle_constrain</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">,</span> <span class="c1">#constrain over the angle between the 2 and 3 cell vectors</span>
+<span class="n">value_cosine_cell_angle</span> <span class="mf">0.0000</span><span class="p">,</span> <span class="mf">0.0000</span>
+<span class="n">volume_constrain</span> <span class="mi">0</span>
+<span class="n">volume_value</span> <span class="mf">1738.634</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>..WARNING::</dt>
+<dd>It is important to note that all the flags must have values, otherwise
+the program won’t have enough information to carry on the calculations,
+any comment must start with the comment symbol &#8220;#&#8221;.</dd>
+</dl>
+</div>
+<div class="section" id="temperature-control">
+<h2>Temperature Control<a class="headerlink" href="#temperature-control" title="Permalink to this headline">¶</a></h2>
+<p>There are three types of temperature control in this MD implementation:
+temperature can be constant with flag <em>temp_cons</em>, it can increase or decrease
+linearly with flag <em>temp_line</em>, or it can increase or decrease in systematic
+plateaus with flag <em>temp_plat</em>, and <em>temp_step</em> defines the number of
+steps in every temperature plateau. At the time of a simulation only one
+of the three temperature flags must be active, the other ones <strong>must</strong> have
+a comment symbol # in front.</p>
+<p><strong>Constant Temperature</strong>
+For a constant temperature simulation the flag is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">temp_cons</span> <span class="mf">250.89</span>
+</pre></div>
+</div>
+<p>here 250.89 is the temperature in Kelvin for the simulation.</p>
+<p><strong>Linear Control Temperature</strong>
+For a simulation where the temperature increase or decrease linearly the flag is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">temp_line</span>      <span class="mf">250.6</span><span class="p">,</span> <span class="mf">275.6</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>the first number is the starting temperature in Kelvin, the second
+temperature is the final temperature in Kelvin. After the numerical value</p>
+<blockquote>
+<div>of the temperatures, there <strong>must</strong> be a “,”.</div></blockquote>
+<p><strong>Plateus Control Temperature</strong>
+For a simulation where the temperature increase of decrease in plateaus
+the flag is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">temp_plat</span>      <span class="mf">250.0</span><span class="p">,</span> <span class="mf">280.0</span><span class="p">,</span> <span class="mf">290.5</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>every value defines the temperature for every plateau, there <strong>must</strong> be a
+“,” after every temperature value. In addition of the specification to
+the temperatures of every plateau, the system needs to know the number
+of steps for every plateau. The flag with the number of steps per
+plateau is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">temp_step</span>      <span class="mi">10</span><span class="p">,</span>   <span class="mi">5</span><span class="p">,</span>   <span class="mi">5</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>the total number of steps must be equal to the total number of steps
+in the simulation <em>(md_steps*abinit_steps)</em>, moreover the number of
+different  <em>temp_step</em> must be equal to the number of plateaus, and
+every number of steps must be separated by a “,”.</p>
+</div>
+<div class="section" id="the-flags-in-the-md-file">
+<h2>The Flags in the .md File<a class="headerlink" href="#the-flags-in-the-md-file" title="Permalink to this headline">¶</a></h2>
+<p><strong>Qmass</strong> Mass of the thermostat, the units are hartree*femtoseconds^2</p>
+<p><strong>bmas</strong>  Mass of the barostat in units of (hartree/bohr^3)*femtoseconds^2</p>
+<p><strong>Pressure</strong> External pressure over the structure in units of (hartree/bohr^3)</p>
+<p><strong>dt</strong> Value of the time differential for integration  the unit of time
+is the femtosecond, we don’t recommend using a dt bigger than 0.1 which
+would be equivalent to 0.1femtoseconds.</p>
+<p><strong>corect_steps</strong> number of steps for the predictor-corrector algorithm that
+performs the integration of the equations of motion.</p>
+<dl class="docutils">
+<dt>..WARNING::</dt>
+<dd><strong>The md steps</strong> A molecular dynamic simulation is a systematic
+update of the positions of a system of particles, every one of those
+updates is a md_step, usually, after the update of the positions,
+the forces between particles are recalculated. In this implementation
+of MD we follow a different path, instead of calculating the forces
+after every update of the positions, we do it once every md_steps, so that,
+during those md_steps the system uses the same forces and strains.
+The forces and strains are calculated after the md_steps are performed,
+the number of times the forces and strains are calculated is given
+by abinit_steps, then the total number of steps in molecular dynamics
+is md_total_steps = md_steps*abinit_steps, with md_steps for every
+abinit_step.</dd>
+</dl>
+<p><strong>md_steps</strong> Number of molecular dynamic steps in between callings of
+abinit for new forces and strains.</p>
+<p><strong>abinit_steps</strong> Number of times abinit is going to be called to get
+forces and strains.</p>
+</div>
+<div class="section" id="constraints-definitions">
+<h2>Constraints Definitions<a class="headerlink" href="#constraints-definitions" title="Permalink to this headline">¶</a></h2>
+<p><strong>Fix Atom Constraints</strong></p>
+<p><em>number_atom_fix_constrains</em> defines the number of atoms that are going to
+be constrained to a given position, for example to fix three atoms:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">number_atom_fix_constrains</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p><em>atom_fixed_constrains</em> number or id of the atoms to fix, for example,
+if we want to fix the atoms 1, 2 and 3 (as they are ordered in the .in file),
+we should write:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">atom_fixed_constrains</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>notice that there must be a ‘,’ after every number, even at the end of
+the last one.</p>
+<p><em>atom_fixed_position</em> coordinates of positions where the atoms are to be
+fixed, the coordinates must be points in three-dimensional space in units
+of Bohr, where every 3D point is separated by “,” an example assuming we
+want to fix three atoms:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">atom_fixed_position</span> <span class="mf">0.00</span> <span class="mf">0.00</span> <span class="mf">0.00</span><span class="p">,</span> <span class="mf">5.25</span> <span class="mf">2.36</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">4.21</span> <span class="mf">3.65</span> <span class="mf">4.72</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>notice that there must be a ‘,’ after every 3D point, even at the end of
+the last one.</p>
+<p><em>atom_fix_coordinate</em> Allow for fixing the atoms to a given set of the (x,y,z) coordinates,
+this can be done by setting a 1 in the coordinate where the constraint
+is going to be activated and a 0 where there is not going to be a constraint,
+for instance, if you want the atoms declared in <em>atom_fixed_constrains</em>
+to be held at the positions given at <em>atom_fixed_position</em> then <em>atom_fix_coordinate</em>
+must be declared as:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">atom_fix_coordinate</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>But if for example, you want to fix the atom 1 to 0.00 only in the x coordinate,
+and fix the atom 2 to y= 2.36, and 3 fixed in y = 3.65 and z = 4.72,
+then the declaration should look like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">atom_fix_coordinate</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Notice the set of three numbers representing every atom are separated
+by “,” and don’t forget the “,” at the end of the last one too.</p>
+<p>In the case where there are no bond constraints then <em>number_atom_fix_constrains 0</em>,
+for instance</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">number_atom_fix_constrains</span> <span class="mi">0</span>
+<span class="n">atom_fixed_constrains</span> <span class="mi">0</span><span class="p">,</span>
+<span class="n">atom_fixed_position</span> <span class="mf">0.00</span> <span class="mf">0.00</span> <span class="mf">0.00</span><span class="p">,</span>
+<span class="n">atom_fix_coordinate</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">,</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bond-constraints">
+<h2>Bond constraints<a class="headerlink" href="#bond-constraints" title="Permalink to this headline">¶</a></h2>
+<p><em>number_bond_constrains</em> defines the number of bonds that are going to be constrained,
+for example to constrain to bonds:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">number_bond_constrains</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p><em>bond_constrains</em> the pairs of particles under the constraints, for
+instance, to constrain the distance between the particles 1  2, and 1  3 we write:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bond_constrains</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>notice that there must be a ‘,’ after every pair, even at the end of the last pair.</p>
+<p><em>bond_distance</em> here is where the distance (in bohr) of every pair is defined,
+every distance must be separated by a ‘,’ (so no ‘,’ after the last distance),
+for example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bond_distance</span> <span class="mf">6.76275</span><span class="p">,</span> <span class="mf">6.89948</span>
+</pre></div>
+</div>
+<p>In the case where there are no bond constraints then <em>number_bond_constrains 0</em>, for instance:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">number_bond_constrains</span> <span class="mi">0</span>
+<span class="n">bond_constrains</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">,</span>
+<span class="n">bond_distance</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="angle-constraints">
+<h2>Angle constraints<a class="headerlink" href="#angle-constraints" title="Permalink to this headline">¶</a></h2>
+<p><em>number_angle_constrains</em> defines the number of 3 atoms angles that are going to be constrained,
+if you want to constant two angles for example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">number_angle_constrains</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p><em>angle_constrains</em> the triplets of atoms that make up the angles to be
+constrained, it is important to note, that, in every triplet of atoms ‘a’, ‘ b’, ‘c’
+the ‘a’ atom is the vertex of the angle. Similar to <em>bond_constrains</em>
+the triplets must be separated by ‘,’ and there must be a ‘,’ after the last triplet,
+for instance:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">angle_constrains</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">,</span>
+</pre></div>
+</div>
+<p><em>value_cosine_angle</em>  the angle constraint is enforced by the cosine of
+the angle instead of the angle, here is where the values of the
+constraints (cosine of the angle) are defined, the value of every
+constraint must be separated by a ‘,’ (so no ‘,’ after the last one)
+for example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">value_cosine_angle</span> <span class="mf">0.532</span><span class="p">,</span> <span class="mf">0.915</span>
+</pre></div>
+</div>
+<p>In the case where there are no bond constraints use <em>number_angle_constrains 0</em>,
+for instance:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">number_angle_constrains</span> <span class="mi">0</span>
+<span class="n">angle_constrains</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">,</span>
+<span class="n">value_cosine_angle</span> <span class="mf">0.00</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cell-parameter-constraint">
+<h2>Cell parameter constraint<a class="headerlink" href="#cell-parameter-constraint" title="Permalink to this headline">¶</a></h2>
+<p><em>number_cell_parameter_constrain</em> defines the number of cell parameters to be constrained,
+the cell is made up by three primitive vectors, understanding the cell parameter
+as the norm of one of these vectors.</p>
+<blockquote>
+<div>It is important to note that the primitive vectors are ordering
+following the abinit definition in the .in file, for example to constrain one cell parameter:</div></blockquote>
+<dl class="docutils">
+<dt>::</dt>
+<dd>number_cell_parameter_constrain 1</dd>
+</dl>
+<p><em>cell_parameter_constrain</em> gives the cell vectors over which the constraint
+is going to hold, the number of every vector must be separated by ‘,’.
+For instance, if we want to put constraints over the cell parameters
+belonging to the first and second primitive vectors, we would use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cell_parameter_constrain</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>notice that every number is separated by ‘,’ in addition, there is a
+comma at the end of the last number.</p>
+<p><em>cell_parameter_value</em> here is where the length (in bohr) of the restricted
+cell parameters is defined, there must be one per every <em>cell_parameter_constrain</em>,
+the values must be separated by commas, but there is no need for a comma after the last value,
+for example for the case of two constraints:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cell_parameter_value</span> <span class="mf">19.9400</span><span class="p">,</span> <span class="mf">9.1400</span>
+</pre></div>
+</div>
+<p>In the case where no cell parameter constraints are needed the declaration
+in the .md file should look like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">number_cell_parameter_constrain</span> <span class="mi">0</span>
+<span class="n">cell_parameter_constrain</span> <span class="mi">0</span><span class="p">,</span>
+<span class="n">cell_parameter_value</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cell-angle-costrain">
+<h2>Cell_angle_costrain<a class="headerlink" href="#cell-angle-costrain" title="Permalink to this headline">¶</a></h2>
+<p><em>number_cell_angle_constrain</em> number of angles between the primitive
+vectors that are going to be constrained, for example to indicate that
+you are going to constraint two angles:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">number_cell_angle_constrain</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p><em>cell_angle_constrain</em> indicates which angles are going to be a constraint,
+by writing the pair of primitive vectors that define the angle with
+the vertex at [0.0 0.0 0.0]. For instance, if two angles are to be constrained,
+the angles between the primitive vectors 1 2, and 2 3, the indication in
+the .md file must look like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cell_angle_constrain</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>as usual, there is a comma at the end of every pair.</p>
+<p><em>value_cosine_cell_angle</em> here is where the value of the restriction is
+defined, in this implementation the angle restrictions
+are enforced by the cosine of the angle, then the values in this flag
+must be the cosine of the angle. For instance, if you want the angle to
+be restricted to 90 degrees then the value that you should put at value_cosine_cell_angle is 0.00,
+for instance, for the case with two angles:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">value_cosine_cell_angle</span> <span class="mf">0.0000</span><span class="p">,</span> <span class="mf">0.0000</span>
+</pre></div>
+</div>
+<p>In the case where no cell angle constraints are needed the declaration
+in the .md file should look like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">number_cell_angle_constrain</span> <span class="mi">0</span>
+<span class="n">cell_angle_constrain</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">,</span>
+<span class="n">value_cosine_cell_angle</span> <span class="mf">0.0000</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="volume-costrain">
+<h2>Volume costrain<a class="headerlink" href="#volume-costrain" title="Permalink to this headline">¶</a></h2>
+<p><em>volume_constrain</em> if there is volume constrain the value must  be 1
+otherwise the value is 0.</p>
+<p><em>volume_value</em> the value to which the volume is going to be a
+constraint in bohr^3.</p>
+<p>In the case of no volume constraint the .md file should look like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">volume_constrain</span> <span class="mi">0</span>
+<span class="n">volume_value</span> <span class="mf">0.00</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The .md File</a><ul>
+<li><a class="reference internal" href="#id1">The .md File</a></li>
+<li><a class="reference internal" href="#temperature-control">Temperature Control</a></li>
+<li><a class="reference internal" href="#the-flags-in-the-md-file">The Flags in the .md File</a></li>
+<li><a class="reference internal" href="#constraints-definitions">Constraints Definitions</a></li>
+<li><a class="reference internal" href="#bond-constraints">Bond constraints</a></li>
+<li><a class="reference internal" href="#angle-constraints">Angle constraints</a></li>
+<li><a class="reference internal" href="#cell-parameter-constraint">Cell parameter constraint</a></li>
+<li><a class="reference internal" href="#cell-angle-costrain">Cell_angle_costrain</a></li>
+<li><a class="reference internal" href="#volume-costrain">Volume costrain</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="32.files_file.html"
+                        title="previous chapter">The .files File</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="40.tutorials.html"
+                        title="next chapter">Tutorials</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/text/33.md_file.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="40.tutorials.html" title="Tutorials"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="32.files_file.html" title="The .files File"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">mdwc 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="30.input_files.html" >Input Files</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Arturo Hernandez.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

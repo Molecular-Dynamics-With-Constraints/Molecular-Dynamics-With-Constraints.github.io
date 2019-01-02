@@ -1,0 +1,12 @@
+.. _chap-requirements:
+
+mdwc Requirements
+#################
+For its correct functioning mdwc needs the following codes:
+
+1. `Python 2.7 <https://www.python.org/download/releases/2.7/>`_
+
+2. `Numpy <http://www.numpy.org/>`_ 1.1 1 or newer
+
+
+* `Abinit <https://www.abinit.org/>`_ To calculate energies and forces for the *mdwc_* 
