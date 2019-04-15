@@ -1,0 +1,32 @@
+.. _chap-md_suite_fortran:
+
+Creating and linking the MD_suite fortran library
+#################################################
+
+==================================
+Creating the library from MD_suite
+==================================
+
+For the MD_suite.f90 file inside the mdwc/MD_suite_fortran_lib directory. First create the objects by compiling using gfortran
+::
+	gfortran -c MD_suite.f90
+
+This is going to create MD_suite.o
+
+Then use the ar command to create a library named libMD_suite.a
+::
+	ar crv libMD_suite.a MD_suite.o
+
+=======================================
+Link the library to an external program
+=======================================
+
+To use libMD_suite.a in a external fortran program called main.f90 use
+::
+	gfortran main.f90 -L<path to library> -l<library name> -o main
+
+In our case
+::
+	gfortran main.f90 -Lmdwc/MD_suite_fortran_lib -lMD_suite -o main
+
+Note that the name of the library is MD_suite despite being called  libMD_suite.a since lib is just a suffix. 

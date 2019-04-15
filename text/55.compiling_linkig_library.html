@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Creating and linking the MD_suite fortran library &#8212; mdwc 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="The init_vel_lattice function" href="54.init_vel_lattice.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="54.init_vel_lattice.html" title="The init_vel_lattice function"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">mdwc 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="50.MD_suite_fortran_lib.html" accesskey="U">The MD_suite fortran library</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="creating-and-linking-the-md-suite-fortran-library">
+<span id="chap-md-suite-fortran"></span><h1>Creating and linking the MD_suite fortran library<a class="headerlink" href="#creating-and-linking-the-md-suite-fortran-library" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="creating-the-library-from-md-suite">
+<h2>Creating the library from MD_suite<a class="headerlink" href="#creating-the-library-from-md-suite" title="Permalink to this headline">¶</a></h2>
+<p>For the MD_suite.f90 file inside the mdwc/MD_suite_fortran_lib directory. First create the objects by compiling using gfortran</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gfortran</span> <span class="o">-</span><span class="n">c</span> <span class="n">MD_suite</span><span class="o">.</span><span class="n">f90</span>
+</pre></div>
+</div>
+<p>This is going to create MD_suite.o</p>
+<p>Then use the ar command to create a library named libMD_suite.a</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ar</span> <span class="n">crv</span> <span class="n">libMD_suite</span><span class="o">.</span><span class="n">a</span> <span class="n">MD_suite</span><span class="o">.</span><span class="n">o</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="link-the-library-to-an-external-program">
+<h2>Link the library to an external program<a class="headerlink" href="#link-the-library-to-an-external-program" title="Permalink to this headline">¶</a></h2>
+<p>To use libMD_suite.a in a external fortran program called main.f90 use</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gfortran</span> <span class="n">main</span><span class="o">.</span><span class="n">f90</span> <span class="o">-</span><span class="n">L</span><span class="o">&lt;</span><span class="n">path</span> <span class="n">to</span> <span class="n">library</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">l</span><span class="o">&lt;</span><span class="n">library</span> <span class="n">name</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">o</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>In our case</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gfortran</span> <span class="n">main</span><span class="o">.</span><span class="n">f90</span> <span class="o">-</span><span class="n">Lmdwc</span><span class="o">/</span><span class="n">MD_suite_fortran_lib</span> <span class="o">-</span><span class="n">lMD_suite</span> <span class="o">-</span><span class="n">o</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>Note that the name of the library is MD_suite despite being called  libMD_suite.a since lib is just a suffix.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Creating and linking the MD_suite fortran library</a><ul>
+<li><a class="reference internal" href="#creating-the-library-from-md-suite">Creating the library from MD_suite</a></li>
+<li><a class="reference internal" href="#link-the-library-to-an-external-program">Link the library to an external program</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="54.init_vel_lattice.html"
+                        title="previous chapter">The init_vel_lattice function</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/text/55.compiling_linkig_library.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="54.init_vel_lattice.html" title="The init_vel_lattice function"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">mdwc 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="50.MD_suite_fortran_lib.html" >The MD_suite fortran library</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Arturo Hernandez.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

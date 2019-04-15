@@ -1,0 +1,31 @@
+.. _chap-md_suite_fortran:
+
+The init_vel_atoms function
+##############################
+
+==============
+init_vel_atoms 
+==============
+Function to initialize the value of the velocity of the atoms, following a random gaussian distribution center at a given temperature, and with total momentum zero. In this function the Boltzmann constant is in Hartree/Kelvin.
+::
+	init_vel_atoms(amu,temp, nat, vel_out)
+
+===========================================
+The input parameters for **init_vel_atoms**
+===========================================
+
+**amu** real(8) dimension (nat) array with the atomic mass of the atoms in the structure.
+
+**temp** real(8) value of the temperature.
+
+**nat** integer, number of atoms in the system.
+
+============================================
+The output parameters for **init_vel_atoms**
+============================================
+
+**vel_out**  real(8), dimension (3, nat), matrix with the initialized velocities of the atoms in the system.
+
+
+	
+

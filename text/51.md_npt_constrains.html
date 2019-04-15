@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The md_npt_constrains function &#8212; mdwc 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The md_nvt_constrains function" href="52.md_nvt_constrains.html" />
+    <link rel="prev" title="The MD_suite fortran library" href="50.MD_suite_fortran_lib.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="52.md_nvt_constrains.html" title="The md_nvt_constrains function"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="50.MD_suite_fortran_lib.html" title="The MD_suite fortran library"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">mdwc 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="50.MD_suite_fortran_lib.html" accesskey="U">The MD_suite fortran library</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-md-npt-constrains-function">
+<span id="chap-md-suite-fortran"></span><h1>The md_npt_constrains function<a class="headerlink" href="#the-md-npt-constrains-function" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="md-npt-constrains">
+<h2>md_npt_constrains<a class="headerlink" href="#md-npt-constrains" title="Permalink to this headline">¶</a></h2>
+<p>Performs molecular dynamics in a npt ensemble holding the indicated constraints.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">md_npt_constrains</span> <span class="p">(</span><span class="n">latvec_in</span><span class="p">,</span><span class="n">xred_in</span><span class="p">,</span> <span class="n">x_t_dot_in</span><span class="p">,</span><span class="n">fcart_in</span><span class="p">,</span><span class="n">strten_in</span><span class="p">,</span>
+                                        <span class="n">vel_in</span><span class="p">,</span><span class="n">vel_lat_in</span><span class="p">,</span> <span class="n">bond_valu</span><span class="p">,</span> <span class="n">angl_valu</span><span class="p">,</span> <span class="n">cell_para_valu</span><span class="p">,</span>
+                                        <span class="n">cell_angl_valu</span><span class="p">,</span> <span class="n">volu_valu</span><span class="p">,</span> <span class="n">atom_fix_valu</span><span class="p">,</span> <span class="n">atom_fix_cord</span><span class="p">,</span>
+                                        <span class="n">target_pressure_habohr</span><span class="p">,</span> <span class="n">amu</span><span class="p">,</span> <span class="n">Qmass</span><span class="p">,</span> <span class="n">bmass</span><span class="p">,</span> <span class="n">dtion_md</span><span class="p">,</span>
+                                        <span class="n">temp</span><span class="p">,</span> <span class="n">s_in</span><span class="p">,</span> <span class="n">s_in_dot</span><span class="p">,</span> <span class="n">bond_const</span><span class="p">,</span><span class="n">angl_const</span><span class="p">,</span>
+                                        <span class="n">cell_para_const</span><span class="p">,</span> <span class="n">cell_angl_const</span><span class="p">,</span><span class="n">atom_fix_const</span><span class="p">,</span>
+                                        <span class="n">correc_steps</span><span class="p">,</span> <span class="n">md_steps</span><span class="p">,</span><span class="n">bool_bond_cons</span><span class="p">,</span><span class="n">bool_angl_cons</span><span class="p">,</span>
+                                        <span class="n">bool_cell_para_cons</span><span class="p">,</span> <span class="n">bool_cell_angl_cons</span><span class="p">,</span><span class="n">bool_volu</span><span class="p">,</span>
+                                        <span class="n">bool_atom_fix_cons</span><span class="p">,</span> <span class="n">volu_cons</span><span class="p">,</span> <span class="n">nat</span><span class="p">,</span> <span class="n">numb_cell_angl_cons</span><span class="p">,</span>
+                                        <span class="n">numb_cell_para_cons</span><span class="p">,</span> <span class="n">numb_angl_cons</span><span class="p">,</span> <span class="n">numb_bond_cons</span><span class="p">,</span>
+                                        <span class="n">numb_atom_fix_cons</span><span class="p">,</span> <span class="n">s_out</span><span class="p">,</span> <span class="n">s_out_dot</span><span class="p">,</span> <span class="n">pressure_out</span><span class="p">,</span>
+                                        <span class="n">volu_out</span><span class="p">,</span> <span class="n">bond_constrain_out</span><span class="p">,</span> <span class="n">cos_constrain_out</span><span class="p">,</span>
+                                        <span class="n">h_out</span><span class="p">,</span>  <span class="n">h_dot_out</span><span class="p">,</span> <span class="n">x_out</span><span class="p">,</span> <span class="n">x_dot_out</span><span class="p">,</span> <span class="n">v_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-input-parameters-for-md-npt-constrains">
+<h2>The input parameters for <strong>md_npt_constrains</strong><a class="headerlink" href="#the-input-parameters-for-md-npt-constrains" title="Permalink to this headline">¶</a></h2>
+<p><strong>latvec_in</strong>  real(8), dimension (3,3) lattice vectors given in a matrix where every column of the matrix correspond to a lattice vector.</p>
+<p><strong>xred_in</strong> real(8), dimension (3, nat), matrix with the current reduced positions of the atoms in the system.</p>
+<p><strong>x_t_dot_in</strong> real(8), dimension (3, nat), matrix with the current derivative of the reduced positions of the atoms in the system.</p>
+<p><strong>fcart_in</strong> real(8), dimension (3, nat), matrix with the current cartesian (not reduced) forces over the atoms in the system.</p>
+<p><strong>strten_in</strong> real(8), dimension (6), cartesian components of the stress tensor.</p>
+<p><strong>vel_in</strong>  real(8), dimension (3, nat), matrix with the current velocities of the atoms in the system, initialize with subroutine <strong>init_vel_atoms</strong>.</p>
+<p><strong>vel_lat_in</strong>  real(8), dimension (3, 3), matrix with the current velocities of the lattice, initialize with subroutine <strong>init_vel_lattice</strong>.
+<strong>bond_valu</strong> real(8), dimension (numb_bond_cons), array with the values of the bond constraints. For example if you use 2 bond constraints between atoms (1,2) and (4,6), then the first value in <strong>**bond_valu**</strong> will be the value of the constraint enforced between atoms (1,2). <strong>In the case of no bond constraints then bond_valu must have at least one value.</strong></p>
+<p><strong>angl_valu</strong> real(8), dimension (numb_angl_cons),  array with the values of the angle constraints. For example if you use 2 angle constraints between atoms (1,2,3), and (6,7,8), then the first value in <strong>**angl_valy**</strong> will be the value of the constraint enforced between atoms (1,2,3). <strong>In the case of no angle constraints then angl_valu must have at least one value.</strong></p>
+<p><strong>cell_para_valu</strong> real(8), dimension (numb_cell_para_cons), array with the values of the constraints over the lengths of the cell parameters. <strong>In the case of no cell parameter  constraints then cell_para_valu must have at least one value.</strong></p>
+<p><strong>cell_angl_valu</strong> real(8),  dimension (numb_angl_cons), with the values of the constraints over the angles of the cell vectors. <strong>In the case of no cell angles constraints then cell_angl_valu must have at least one value.</strong></p>
+<p><strong>volu_valu</strong> real(8), dimension (volu_cons), with the value of the of the constraint over the volume. <strong>In the case of no volume constraints then volu_valu must have at least one value.</strong></p>
+<p><strong>atom_fix_valu</strong> real(8), dimension (numb_atom_fix_cons,3) coordinates of positions where the atoms are to be fixed. For example if you want to fix atom 1 to [0.0, 0.0, 0.0] and atom 2 to [1.0, 1.0, 1.0], then
+::
+atom_fix_valu -&gt; [[0.0, 0.0, 0.0], [1.0, 1.0, 1.0] ].</p>
+<p><strong>In the case of no atom fix constraints then atom_fix_valu must have at least one value [[0.0, 0.0, 0.0]].</strong></p>
+<p><strong>atom_fix_cord</strong> real(8), dimension (numb_atom_fix_cons,3) Allow for fixing the atoms to a given set of the (x,y,z) coordinates, this can be done by setting a 1 in the coordinate where the constraint is going to be activated and a 0 where there is not going to be a constraint, for instance, if you want the atoms declared in atom_fixed_constrains to be held at the positions given at <strong>atom_fixed_position</strong> then <strong>atom_fix_coordinate</strong> must be declared:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">atom_fix_cord</span> <span class="o">-&gt;</span>  <span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span> <span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>But if for example, you want to fix the atom 1 to 0.00 only in the x coordinate, and fix the atom 2 to y= 1.0,  then use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">atom_fix_cord</span> <span class="o">-&gt;</span>  <span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span> <span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>In the case of no atom fix constraints then atom_fix_cord must have at least one value [[0.0, 0.0, 0.0]].</strong></p>
+<p><strong>target_pressure_habohr</strong> real(8) External pressure over the structure.</p>
+<p><strong>amu</strong> real(8) dimension (nat) array with the atomic mass of the atoms in the structure</p>
+<p><strong>Qmass</strong> real(8) mass of the thermostat.</p>
+<p><strong>bmass</strong> real(8) mass of the barostat.</p>
+<p><strong>dtion_md</strong> real(8) value of the time differential for integration the unit of time is the femtosecond, we don’t recommend using a dt bigger than 0.1 which would be equivalent to 0.1femtoseconds.</p>
+<p><strong>temp</strong> real(8) value of the temperature.</p>
+<p><strong>s_in</strong> real(8) thermostat degree of freedom at current time.</p>
+<p><strong>s_in_dot</strong> real(8) derivative of thermostat degree of freedom at current time.</p>
+<p><strong>bond_const</strong>  integer, dimension (numb_bond_cons,2), array indicating the atoms in the bond constraints, for example, to indicate 2 constraints, one between atoms (1,2), and other between atoms (3,5):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bond_const</span> <span class="o">-&gt;</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>In the case of no having bond constraints then use bond_const -&gt; [[1]]</p>
+<p><strong>angl_const</strong>  integer, dimension (numb_angl_cons,3), array indicating the atoms in the bond constraints, for example, to indicate 2 constraints, one between atoms (1,2,3), and other between atoms (5,6,7):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">angl_const</span> <span class="o">-&gt;</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>The first atom in the array of 3 is the atom taken as the vertex of the angle. In the case of no having angle constraints then use angl_const -&gt; [[1,1,1]]</p>
+<p><strong>cell_para_const</strong> integer, dimension (numb_cell_para_cons,1), array indicating the cell parameters to be constraint, for example, to indicate that the length of cell vectors 1 and 2 are going to be constraint use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cell_para_const</span> <span class="o">-&gt;</span> <span class="p">[[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>In the case of no having cell parameter constraints then use cell_para_const -&gt; [[1]]</p>
+<p><strong>cell_angl_const</strong>  integer, dimension (numb_cell_angl_cons,2), array indicating the cell angles to be constraint, for example, to indicate that the angle between the cell vectors (1,2), and (1,3) are going to be constraint use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cell_angl_const</span> <span class="o">-&gt;</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>In the case of no having angle constraints then use cell_angl_const -&gt; [[1,1]]</p>
+<p><strong>atom_fix_const</strong> integer, dimension (numb_atom_fix_cons,1), array with the list of atoms to be constraint to a given position, for example, to indicate that the atoms 1 and 2 are going to be constraint use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">atom_fix_const</span> <span class="o">-&gt;</span> <span class="p">[[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>In the case of no having atoms positions constraints then use atom_fix_const -&gt; [[1]]</p>
+<p><strong>correc_steps</strong> number of steps for the predictor-corrector algorithm that performs the integration of the equations of motion.</p>
+<p><strong>md_steps</strong> number of md steps to be performed with the given input forces as forces guiding the dynamics.</p>
+<p><strong>bool_bond_cons</strong> integer, 1 if there are bond constraints, 0 otherwise.</p>
+<p><strong>bool_angl_cons</strong>  integer, 1 if there are angle constraints, 0 otherwise.</p>
+<p><strong>bool_cell_para_cons</strong>  integer, 1 if there are cell parameter constraints, 0 otherwise.</p>
+<p><strong>bool_cell_angl_cons</strong> integer, 1 if there are cell angle constraints, 0 otherwise.</p>
+<p><strong>bool_volu</strong> integer, 1 if there is volume constraints, 0 otherwise.</p>
+<p><strong>bool_atom_fix_cons</strong> integer, 1 if there are atom positions constraints, 0 otherwise.</p>
+<p><strong>volu_cons</strong> integer,  it is just 1, it has a purpose in the <a href="#id1"><span class="problematic" id="id2">mdwc_</span></a> python script but not when using the fortran library.</p>
+<p><strong>nat</strong> integer, number of atoms in the system.</p>
+<p><strong>numb_cell_angl_cons</strong> integer, number of cell angle constraints, if there are no cell angle constraints use numb_cell_angl_cons -&gt; 1.
+<strong>numb_cell_para_cons</strong>  integer, number of cell parameters constraints, if there are no cell parameters constraints use numb_cell_para_cons -&gt; 1.</p>
+<p><strong>numb_angl_cons</strong> integer, number of angles constraints, if there are no angles constraints use numb_angl_cons -&gt; 1.</p>
+<p><strong>numb_bond_cons</strong> integer, number of bond constraints, if there are no bond constraints use numb_bond_cons -&gt; 1.</p>
+<p><strong>numb_atom_fix_cons</strong>  integer, number of atom positions constraints, if there are no atom positions constraints use numb_bond_cons -&gt; 1.</p>
+</div>
+<div class="section" id="the-output-parameters-for-md-npt-constrains">
+<h2>The output parameters for <strong>md_npt_constrains</strong><a class="headerlink" href="#the-output-parameters-for-md-npt-constrains" title="Permalink to this headline">¶</a></h2>
+<p><strong>s_out</strong>  real(8) thermostat degree of freedom at the output time.</p>
+<p><strong>s_out_dot</strong> real(8) derivative of the thermostat degree of freedom at the output time.</p>
+<p><strong>pressure_out</strong> real(8) dimension (md_steps), array with the value of the pressure during the md_steps.</p>
+<p><strong>volu_out</strong> real(8) dimension (md_steps), array with the value of the volume during the md_steps.</p>
+<p><strong>bond_constrain_out</strong> real(8) dimension (md_steps, numb_bond_cons), array with the value of the bond constraints during the md_steps.</p>
+<p><strong>cos_constrain_out</strong> real(8) dimension (md_steps, numb_angl_cons), array with the value of the cosine of the angle constraints during the md_steps.</p>
+<p><strong>h_out</strong> real(8) dimensions (3,3) matrix with the output lattice (cell) vectors as columns in the matrix after md_steps.</p>
+<p><strong>h_dot_out</strong> real(8) dimensions (3,3) matrix with the output derivative of lattice (cell) vectors as columns in the matrix after md_steps.</p>
+<p><strong>x_out</strong> real(8) dimensions (3, nat), reduced positions of the atoms in the cell after md_steps.</p>
+<p><strong>x_dot_out</strong> real(8) dimensions (3, nat), derivative of the reduced positions of the atoms in the cell after md_steps.</p>
+<p><strong>v_out</strong> real(8) dimensions (3, nat), velocity of the atoms in the cell after md_steps.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The md_npt_constrains function</a><ul>
+<li><a class="reference internal" href="#md-npt-constrains">md_npt_constrains</a></li>
+<li><a class="reference internal" href="#the-input-parameters-for-md-npt-constrains">The input parameters for <strong>md_npt_constrains</strong></a></li>
+<li><a class="reference internal" href="#the-output-parameters-for-md-npt-constrains">The output parameters for <strong>md_npt_constrains</strong></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="50.MD_suite_fortran_lib.html"
+                        title="previous chapter">The MD_suite fortran library</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="52.md_nvt_constrains.html"
+                        title="next chapter">The md_nvt_constrains function</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/text/51.md_npt_constrains.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="52.md_nvt_constrains.html" title="The md_nvt_constrains function"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="50.MD_suite_fortran_lib.html" title="The MD_suite fortran library"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">mdwc 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="50.MD_suite_fortran_lib.html" >The MD_suite fortran library</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Arturo Hernandez.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

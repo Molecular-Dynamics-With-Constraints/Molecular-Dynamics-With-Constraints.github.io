@@ -1,0 +1,165 @@
+.. _chap-md_suite_fortran:
+
+The md_npt_constrains function
+##############################
+
+=================
+md_npt_constrains 
+=================
+Performs molecular dynamics in a npt ensemble holding the indicated constraints.
+::
+	md_npt_constrains (latvec_in,xred_in, x_t_dot_in,fcart_in,strten_in, 
+						vel_in,vel_lat_in, bond_valu, angl_valu, cell_para_valu, 
+						cell_angl_valu, volu_valu, atom_fix_valu, atom_fix_cord, 
+						target_pressure_habohr, amu, Qmass, bmass, dtion_md, 
+						temp, s_in, s_in_dot, bond_const,angl_const, 
+						cell_para_const, cell_angl_const,atom_fix_const, 
+						correc_steps, md_steps,bool_bond_cons,bool_angl_cons,
+						bool_cell_para_cons, bool_cell_angl_cons,bool_volu,
+						bool_atom_fix_cons, volu_cons, nat, numb_cell_angl_cons,
+						numb_cell_para_cons, numb_angl_cons, numb_bond_cons,
+						numb_atom_fix_cons, s_out, s_out_dot, pressure_out, 
+						volu_out, bond_constrain_out, cos_constrain_out, 
+						h_out,  h_dot_out, x_out, x_dot_out, v_out)
+
+==============================================
+The input parameters for **md_npt_constrains**
+==============================================
+
+**latvec_in**  real(8), dimension (3,3) lattice vectors given in a matrix where every column of the matrix correspond to a lattice vector.
+
+**xred_in** real(8), dimension (3, nat), matrix with the current reduced positions of the atoms in the system.
+
+**x_t_dot_in** real(8), dimension (3, nat), matrix with the current derivative of the reduced positions of the atoms in the system.
+
+**fcart_in** real(8), dimension (3, nat), matrix with the current cartesian (not reduced) forces over the atoms in the system.
+
+**strten_in** real(8), dimension (6), cartesian components of the stress tensor.
+
+**vel_in**  real(8), dimension (3, nat), matrix with the current velocities of the atoms in the system, initialize with subroutine **init_vel_atoms**.
+
+**vel_lat_in**  real(8), dimension (3, 3), matrix with the current velocities of the lattice, initialize with subroutine **init_vel_lattice**.
+**bond_valu** real(8), dimension (numb_bond_cons), array with the values of the bond constraints. For example if you use 2 bond constraints between atoms (1,2) and (4,6), then the first value in ****bond_valu**** will be the value of the constraint enforced between atoms (1,2). **In the case of no bond constraints then bond_valu must have at least one value.**
+
+**angl_valu** real(8), dimension (numb_angl_cons),  array with the values of the angle constraints. For example if you use 2 angle constraints between atoms (1,2,3), and (6,7,8), then the first value in ****angl_valy**** will be the value of the constraint enforced between atoms (1,2,3). **In the case of no angle constraints then angl_valu must have at least one value.**
+
+**cell_para_valu** real(8), dimension (numb_cell_para_cons), array with the values of the constraints over the lengths of the cell parameters. **In the case of no cell parameter  constraints then cell_para_valu must have at least one value.**
+
+**cell_angl_valu** real(8),  dimension (numb_angl_cons), with the values of the constraints over the angles of the cell vectors. **In the case of no cell angles constraints then cell_angl_valu must have at least one value.**
+
+**volu_valu** real(8), dimension (volu_cons), with the value of the of the constraint over the volume. **In the case of no volume constraints then volu_valu must have at least one value.**
+
+**atom_fix_valu** real(8), dimension (numb_atom_fix_cons,3) coordinates of positions where the atoms are to be fixed. For example if you want to fix atom 1 to [0.0, 0.0, 0.0] and atom 2 to [1.0, 1.0, 1.0], then 
+::
+atom_fix_valu -> [[0.0, 0.0, 0.0], [1.0, 1.0, 1.0] ]. 
+
+**In the case of no atom fix constraints then atom_fix_valu must have at least one value [[0.0, 0.0, 0.0]].**
+
+**atom_fix_cord** real(8), dimension (numb_atom_fix_cons,3) Allow for fixing the atoms to a given set of the (x,y,z) coordinates, this can be done by setting a 1 in the coordinate where the constraint is going to be activated and a 0 where there is not going to be a constraint, for instance, if you want the atoms declared in atom_fixed_constrains to be held at the positions given at **atom_fixed_position** then **atom_fix_coordinate** must be declared:
+::
+	atom_fix_cord ->  [[1.0, 1.0, 1.0] , [1.0, 1.0, 1.0] ]
+
+But if for example, you want to fix the atom 1 to 0.00 only in the x coordinate, and fix the atom 2 to y= 1.0,  then use:
+::
+	atom_fix_cord ->  [[1.0, 0.0, 0.0] , [0.0, 1.0, 0.0] ]
+**In the case of no atom fix constraints then atom_fix_cord must have at least one value [[0.0, 0.0, 0.0]].**
+
+**target_pressure_habohr** real(8) External pressure over the structure.
+
+**amu** real(8) dimension (nat) array with the atomic mass of the atoms in the structure
+
+**Qmass** real(8) mass of the thermostat.
+
+**bmass** real(8) mass of the barostat.
+
+**dtion_md** real(8) value of the time differential for integration the unit of time is the femtosecond, we don’t recommend using a dt bigger than 0.1 which would be equivalent to 0.1femtoseconds.
+
+**temp** real(8) value of the temperature.
+
+**s_in** real(8) thermostat degree of freedom at current time.
+
+**s_in_dot** real(8) derivative of thermostat degree of freedom at current time.
+
+**bond_const**  integer, dimension (numb_bond_cons,2), array indicating the atoms in the bond constraints, for example, to indicate 2 constraints, one between atoms (1,2), and other between atoms (3,5):
+::
+	bond_const -> [[1,2],[3,5]] 
+
+In the case of no having bond constraints then use bond_const -> [[1]] 
+
+**angl_const**  integer, dimension (numb_angl_cons,3), array indicating the atoms in the bond constraints, for example, to indicate 2 constraints, one between atoms (1,2,3), and other between atoms (5,6,7):
+::
+	angl_const -> [[1,2,3],[5,6,7]] 
+The first atom in the array of 3 is the atom taken as the vertex of the angle. In the case of no having angle constraints then use angl_const -> [[1,1,1]] 
+
+**cell_para_const** integer, dimension (numb_cell_para_cons,1), array indicating the cell parameters to be constraint, for example, to indicate that the length of cell vectors 1 and 2 are going to be constraint use:
+::
+	cell_para_const -> [[1],[2]] 
+In the case of no having cell parameter constraints then use cell_para_const -> [[1]] 
+
+**cell_angl_const**  integer, dimension (numb_cell_angl_cons,2), array indicating the cell angles to be constraint, for example, to indicate that the angle between the cell vectors (1,2), and (1,3) are going to be constraint use:
+::
+	cell_angl_const -> [[1,2],[1,3]] 
+In the case of no having angle constraints then use cell_angl_const -> [[1,1]] 
+
+**atom_fix_const** integer, dimension (numb_atom_fix_cons,1), array with the list of atoms to be constraint to a given position, for example, to indicate that the atoms 1 and 2 are going to be constraint use:
+::
+	atom_fix_const -> [[1],[2]] 
+In the case of no having atoms positions constraints then use atom_fix_const -> [[1]]
+
+**correc_steps** number of steps for the predictor-corrector algorithm that performs the integration of the equations of motion.
+
+**md_steps** number of md steps to be performed with the given input forces as forces guiding the dynamics.
+
+**bool_bond_cons** integer, 1 if there are bond constraints, 0 otherwise. 
+
+**bool_angl_cons**  integer, 1 if there are angle constraints, 0 otherwise.
+
+**bool_cell_para_cons**  integer, 1 if there are cell parameter constraints, 0 otherwise.
+
+**bool_cell_angl_cons** integer, 1 if there are cell angle constraints, 0 otherwise. 
+
+**bool_volu** integer, 1 if there is volume constraints, 0 otherwise. 
+
+**bool_atom_fix_cons** integer, 1 if there are atom positions constraints, 0 otherwise. 
+
+**volu_cons** integer,  it is just 1, it has a purpose in the mdwc_ python script but not when using the fortran library.
+
+**nat** integer, number of atoms in the system.
+
+**numb_cell_angl_cons** integer, number of cell angle constraints, if there are no cell angle constraints use numb_cell_angl_cons -> 1.
+**numb_cell_para_cons**  integer, number of cell parameters constraints, if there are no cell parameters constraints use numb_cell_para_cons -> 1.
+
+**numb_angl_cons** integer, number of angles constraints, if there are no angles constraints use numb_angl_cons -> 1.
+
+**numb_bond_cons** integer, number of bond constraints, if there are no bond constraints use numb_bond_cons -> 1.
+
+**numb_atom_fix_cons**  integer, number of atom positions constraints, if there are no atom positions constraints use numb_bond_cons -> 1.
+
+===============================================
+The output parameters for **md_npt_constrains**
+===============================================
+
+**s_out**  real(8) thermostat degree of freedom at the output time.
+
+**s_out_dot** real(8) derivative of the thermostat degree of freedom at the output time.
+
+**pressure_out** real(8) dimension (md_steps), array with the value of the pressure during the md_steps.
+
+**volu_out** real(8) dimension (md_steps), array with the value of the volume during the md_steps.
+
+**bond_constrain_out** real(8) dimension (md_steps, numb_bond_cons), array with the value of the bond constraints during the md_steps.
+
+**cos_constrain_out** real(8) dimension (md_steps, numb_angl_cons), array with the value of the cosine of the angle constraints during the md_steps.
+
+**h_out** real(8) dimensions (3,3) matrix with the output lattice (cell) vectors as columns in the matrix after md_steps.
+
+**h_dot_out** real(8) dimensions (3,3) matrix with the output derivative of lattice (cell) vectors as columns in the matrix after md_steps.
+
+**x_out** real(8) dimensions (3, nat), reduced positions of the atoms in the cell after md_steps.
+
+**x_dot_out** real(8) dimensions (3, nat), derivative of the reduced positions of the atoms in the cell after md_steps.
+
+**v_out** real(8) dimensions (3, nat), velocity of the atoms in the cell after md_steps.
+
+	
+

@@ -1,0 +1,32 @@
+.. _chap-md_suite_fortran:
+
+The init_vel_lattice function
+##############################
+
+================
+init_vel_lattice 
+================
+Function to initialize the value of the velocity of the atoms, following a random gaussian distribution center at a given temperature, and with total momentum zero. In this function the Boltzmann constant is in Hartree/Kelvin.
+::
+	init_vel_lattice(bmass, temp, h_in, h_dot_out)
+
+=============================================
+The input parameters for **init_vel_lattice**
+=============================================
+
+**bmass** real(8) mass of the barostat.
+
+**temp** real(8) value of the temperature.
+
+**h_in** real(8), dimension (3,3) lattice vectors given in a matrix where every column of the matrix correspond to a lattice vector.
+
+
+==============================================
+The output parameters for **init_vel_lattice**
+==============================================
+
+**h_dot_out**  real(8), dimension (3,3) velocity of the lattice vectors given in a matrix where every column of the matrix correspond to a lattice vector.
+
+
+	
+
