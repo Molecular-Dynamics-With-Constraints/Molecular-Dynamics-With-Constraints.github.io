@@ -24,7 +24,7 @@ That's it *mdwc* is installed. The *mdwc_uninstall.txt* stores the
 installation record of *mdwc* in case future uninstallation.
 
 =================
-Uninstalling mlmd
+Uninstalling mdwc
 =================
 
 To uninstall *mdwc*, go to the directory where the *mdwc_uninstall.txt* 
